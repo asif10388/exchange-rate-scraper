@@ -2,11 +2,14 @@ import os
 import time
 import requests
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2.service_account import Credentials
 
-url = os.environ.get("url")
+load_dotenv()
+
+url = os.environ.get("URL")
 SCOPES = [os.environ.get("SCOPES")]
 SAMPLE_RANGE_NAME = os.environ.get("RANGE")
 SAMPLE_SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID")
@@ -44,7 +47,7 @@ def main():
                     "name": colU_N,
                     "rate": firstRowRate,
                     "reserve": colUR_val,
-                    "range": "Sheet1!B17:B19",
+                    "range": "Calculator!B17:B19",
                 }
 
                 exchangeRateUpdater.append(firstRowDict)
@@ -69,7 +72,7 @@ def main():
                     "name": colU_N,
                     "rate": UniChng,
                     "reserve": colUR_val,
-                    "range": "Sheet1!D17:D19",
+                    "range": "Calculator!D17:D19",
                 }
                 exchangeRateUpdater.append(UnionDict)
             else:
@@ -94,7 +97,7 @@ def main():
                     "name": colH_N,
                     "rate": HotExg,
                     "reserve": colHR_val,
-                    "range": "Sheet1!F17:F19",
+                    "range": "Calculator!F17:F19",
                 }
                 exchangeRateUpdater.append(HotDict)
             else:
@@ -119,7 +122,7 @@ def main():
                     "name": colM_N,
                     "rate": Mine,
                     "reserve": colMR_val,
-                    "range": "Sheet1!H17:H19",
+                    "range": "Calculator!H17:H19",
                 }
                 exchangeRateUpdater.append(MineDict)
             else:
