@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  web-scraper:
+    container_name: web-scraper
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
